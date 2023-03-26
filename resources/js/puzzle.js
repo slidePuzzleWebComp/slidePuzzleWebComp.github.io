@@ -315,3 +315,23 @@ function reset() {
 document.getElementById("reset").onclick = function () {
   reset();
 };
+
+
+//make everything draggable: https://www.w3schools.com/html/html5_draganddrop.asp
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+  //remove gost image
+  ev.dataTransfer.setDragImage(new Image(),0,0);
+  
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  let data = ev.dataTransfer.getData("text");
+  moveTile(data);
+}
+

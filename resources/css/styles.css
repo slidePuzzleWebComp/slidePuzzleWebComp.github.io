@@ -93,6 +93,11 @@ h2 {
   height: 9.7vh;
 }
 
+#blankTile {
+  background-image: none;
+  background-color: red;
+}
+
 #tile1 {
   background-position: left -10vh top 0vh;
 }
