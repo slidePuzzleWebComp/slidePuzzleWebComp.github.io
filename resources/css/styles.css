@@ -2,7 +2,7 @@
     border: 1px solid red;
 }*/
 
-/*Prevent refreshing on mobile when swiping down*/
+/*Prevent refreshing on mobile when swiping down contain or none*/
 html,
 body {
     overscroll-behavior-y: none;
