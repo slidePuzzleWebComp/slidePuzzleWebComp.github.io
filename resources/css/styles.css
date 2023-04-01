@@ -2,6 +2,12 @@
     border: 1px solid red;
 }*/
 
+/*Prevent refreshing on mobile when swiping down*/
+html,
+body {
+    overscroll-behavior-y: contain;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
 @media only screen and (orientation: portrait) {
