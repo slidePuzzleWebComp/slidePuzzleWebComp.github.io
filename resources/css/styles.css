@@ -73,6 +73,12 @@ h2 {
   text-align: center;
 }
 
+#reset:hover,
+#shuffle:hover{
+  background-color: darkblue;
+  border-color: darkblue;
+}
+
 .puzzleContainer {
   display: grid;
   gap: 0.3vh;
