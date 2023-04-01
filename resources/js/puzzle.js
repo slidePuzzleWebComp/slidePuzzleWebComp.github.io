@@ -174,10 +174,8 @@ function shuffle() {
 
         moveTile(findTileIdCase1);
       } else {
-        console.log("not moved");
         shuffle();
       }
-      console.log("case1");
 
       break;
 
@@ -192,9 +190,7 @@ function shuffle() {
         moveTile(findTileIdCase2);
       } else {
         shuffle();
-        console.log("not moved");
       }
-      console.log("case2");
 
       break;
 
@@ -209,9 +205,8 @@ function shuffle() {
         moveTile(findTileIdCase3);
       } else {
         shuffle();
-        console.log("not moved");
       }
-      console.log("case3");
+
       break;
 
     //same col row +1
@@ -225,9 +220,8 @@ function shuffle() {
         moveTile(findTileIdCase4);
       } else {
         shuffle();
-        console.log("not moved");
       }
-      console.log("case4");
+
       break;
   }
 }
@@ -244,9 +238,11 @@ document.getElementById("shuffle").onclick = function () {
 //move tile function
 function moveTile(tileId) {
   let movePermission = legalMove(tileId);
+
   if (movePermission == true) {
     let oldBlankTileCol = tileQuery("blankTile").colStart;
     let oldBlankTileRow = tileQuery("blankTile").rowStart;
+
     tileQuery("blankTile").colStart = tileQuery(tileId).colStart;
 
     tileQuery("blankTile").rowStart = tileQuery(tileId).rowStart;
@@ -254,7 +250,7 @@ function moveTile(tileId) {
     tileQuery(tileId).colStart = oldBlankTileCol;
 
     tileQuery(tileId).rowStart = oldBlankTileRow;
-
+    //move tile
     document.getElementById(tileId).style.gridColumnStart =
       tileQuery(tileId).colStart;
     document.getElementById(tileId).style.gridRowStart =
@@ -316,7 +312,6 @@ document.getElementById("reset").onclick = function () {
   reset();
 };
 
-
 //make everything draggable: https://www.w3schools.com/html/html5_draganddrop.asp
 function allowDrop(ev) {
   ev.preventDefault();
@@ -325,8 +320,7 @@ function allowDrop(ev) {
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
   //remove gost image
-  ev.dataTransfer.setDragImage(new Image(),0,0);
-  
+  ev.dataTransfer.setDragImage(new Image(), 0, 0);
 }
 
 function drop(ev) {
@@ -335,3 +329,81 @@ function drop(ev) {
   moveTile(data);
 }
 
+//swipe behavior on mobile devices.
+//source: https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
+
+let touchstartX = 0;
+let touchendX = 0;
+let touchstartY = 0;
+let touchendY = 0;
+
+function touchXdiff() {
+  return touchendX - touchstartX;
+}
+
+function touchYdiff() {
+  return touchendY - touchstartY;
+}
+
+//find info on tiles based on col and rowstart
+function findTileRight() {
+  return tilesArray.find(
+    (item) =>
+      item.colStart === tileQuery("blankTile").colStart + 1 &&
+      item.rowStart === tileQuery("blankTile").rowStart
+  );
+}
+
+function findTileLeft() {
+  return tilesArray.find(
+    (item) =>
+      item.colStart === tileQuery("blankTile").colStart - 1 &&
+      item.rowStart === tileQuery("blankTile").rowStart
+  );
+}
+
+function findTileUnder() {
+  return tilesArray.find(
+    (item) =>
+      item.rowStart === tileQuery("blankTile").rowStart + 1 &&
+      item.colStart === tileQuery("blankTile").colStart
+  );
+}
+
+function findTileAbove() {
+  return tilesArray.find(
+    (item) =>
+      item.rowStart === tileQuery("blankTile").rowStart - 1 &&
+      item.colStart === tileQuery("blankTile").colStart
+  );
+}
+
+function checkDirection() {
+  if (touchendX < touchstartX && touchXdiff() < -40) {
+    //swiped left
+    moveTile(findTileRight().id);
+  }
+  if (touchendX > touchstartX && touchXdiff() > 40) {
+    //swiped right
+    moveTile(findTileLeft().id);
+  }
+  if (touchendY < touchstartY && touchYdiff() < -40) {
+    //swiped up
+    moveTile(findTileUnder().id);
+  }
+  if (touchendY > touchstartY && touchYdiff() > 40) {
+    //swiped down
+    moveTile(findTileAbove().id);
+  }
+}
+
+document.getElementById("puzzleContainer").addEventListener("touchstart", (e) => {
+  touchstartX = e.changedTouches[0].screenX;
+  touchstartY = e.changedTouches[0].screenY;
+});
+
+document.getElementById("puzzleContainer").addEventListener("touchend", (e) => {
+  touchendX = e.changedTouches[0].screenX;
+  touchendY = e.changedTouches[0].screenY;
+  checkDirection();
+});

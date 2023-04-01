@@ -95,7 +95,7 @@ h2 {
 
 #blankTile {
   background-image: none;
-  background-color: red;
+  /*background-color: red;*/
 }
 
 #tile1 {
