@@ -1,121 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="./resources/css/styles.css" rel="stylesheet" type="text/css" />
     <title>Roads Slidepuzzle</title>
   </head>
   <body>
+    <script src="./resources/js/tileElement.js"></script>
     <script src="./resources/js/puzzle.js" defer></script>
+    <template id="SLIDE-PUZZLE">
+      <style>
+        @import "./resources/css/styles.css";
+        </style>`
+      <div class="outsideContainer">
+        <div class="buttoms">
+          <div id="reset">Reset</div>
 
-    <div class="outsideContainer">
-      
+          <div id="shuffle">Shuffle</div>
+        </div>
 
-      <div class="buttoms">
-        <div id="reset">Reset</div>
+        <div class="example"></div>
 
-        <div id="shuffle">Shuffle</div>
+        <div id="puzzleContainer" class="puzzleContainer">
+          <puzzle-tile id="blankTile"></puzzle-tile>
+          <puzzle-tile id="tile1"></puzzle-tile>
+          <puzzle-tile id="tile2"></puzzle-tile>
+          <puzzle-tile id="tile3"></puzzle-tile>
+          <puzzle-tile id="tile4"></puzzle-tile>
+          <puzzle-tile id="tile5"></puzzle-tile>
+          <puzzle-tile id="tile6"></puzzle-tile>
+          <puzzle-tile id="tile7"></puzzle-tile>
+          <puzzle-tile id="tile8"></puzzle-tile>
+          <puzzle-tile id="tile9"></puzzle-tile>
+          <puzzle-tile id="tile10"></puzzle-tile>
+          <puzzle-tile id="tile11"></puzzle-tile>
+          <puzzle-tile id="tile12"></puzzle-tile>
+          <puzzle-tile id="tile13"></puzzle-tile>
+          <puzzle-tile id="tile14"></puzzle-tile>
+          <puzzle-tile id="tile15"></puzzle-tile>
+        </div>
       </div>
-
-      <div class="example"></div>
-
-      <div id="puzzleContainer" class="puzzleContainer">
-        <div
-          id="blankTile"
-          class="tiles"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          id="tile1"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile2"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile3"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile4"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile5"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile6"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile7"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile8"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile9"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile10"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile11"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile12"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile13"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile14"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-        <div
-          id="tile15"
-          class="tiles"
-          draggable="true"
-          ondragstart="drag(event)"
-        ></div>
-      </div>
-    </div>
+    </template>
+    <slide-puzzle></slide-puzzle>
   </body>
 </html>
