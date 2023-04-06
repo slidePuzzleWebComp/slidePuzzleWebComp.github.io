@@ -160,8 +160,8 @@ function legalMove(tileId) {
 //Logic shuffle, take on of the tiles next to the empty space and move
 function shuffle() {
   //change shuffle button back to original color
-  document.getElementById('shuffle').style.backgroundColor = 'rgb(0,174,239)';
-  document.getElementById('shuffle').style.borderColor = 'rgb(0,174,239)';
+  //document.getElementById('shuffle').style.backgroundColor = 'rgb(0,174,239)';
+  //document.getElementById('shuffle').style.borderColor = 'rgb(0,174,239)';
 
   let blankTileCol = tileQuery("blankTile").colStart;
   let blankTileRow = tileQuery("blankTile").rowStart;
