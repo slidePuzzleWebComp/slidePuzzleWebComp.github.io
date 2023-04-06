@@ -73,17 +73,23 @@ h2 {
   text-align: center;
 }
 
-#reset:hover,
+
+@media (hover:hover){
+  #reset:hover,
 #shuffle:hover{
   background-color: darkblue;
   border-color: darkblue;
 }
+}
+
 
 #reset:active,
 #shuffle:active{
-  
+  background-color: darkblue;
   border-color: white;
 }
+
+
 
 
 .puzzleContainer {
